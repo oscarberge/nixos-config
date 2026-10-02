@@ -55,7 +55,7 @@
   users.users."osbe" = {
     isNormalUser = true;
     description = "Oscar Berge";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -102,6 +102,13 @@
 
   programs.firefox.enable = true;
 
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+  virtualisation.docker.enable = true;
+
   services.greetd = {
     enable = true;
     settings = {
@@ -110,11 +117,6 @@
         command = lib.getExe' pkgs.tuigreet "tuigreet";
       };
     };
-  };
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
   };
 
   security.polkit.enable = true; # Polkit daemon
