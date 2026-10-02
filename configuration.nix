@@ -82,6 +82,7 @@
     wlsunset
     python3
     bun
+    prismlauncher
   ];
 
   programs.git = {
