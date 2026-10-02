@@ -116,6 +116,9 @@
     wrapperFeatures.gtk = true;
   };
 
+  programs.steam.enable = true;
+  programs.gamemode.enable = true;
+
   virtualisation.docker.enable = true;
 
   services.greetd = {
