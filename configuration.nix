@@ -86,6 +86,7 @@
     wl-clipboard
     cliphist
     wlsunset
+    bluetui
     python3
     bun
     prismlauncher
