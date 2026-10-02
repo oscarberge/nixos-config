@@ -80,6 +80,7 @@
     wl-clipboard
     cliphist
     wlsunset
+    python3
     bun
   ];
 
