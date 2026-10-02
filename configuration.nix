@@ -76,6 +76,7 @@
     mako
     grim
     slurp
+    pavucontrol
     waybar
     wl-clipboard
     cliphist
