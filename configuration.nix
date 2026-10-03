@@ -89,6 +89,7 @@ in
     pavucontrol
     libnotify
     swaynotificationcenter
+    papirus-icon-theme
     wl-clipboard
     cliphist
     wlsunset
