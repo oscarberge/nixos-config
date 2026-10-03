@@ -96,6 +96,7 @@ in
     cliphist
     wlsunset
     bluetui
+    openconnect
     python3
     bun
     prismlauncher
