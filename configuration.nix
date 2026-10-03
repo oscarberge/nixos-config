@@ -89,6 +89,7 @@ in
     pavucontrol
     libnotify
     swaynotificationcenter
+    poweralertd
     papirus-icon-theme
     adwaita-icon-theme
     wl-clipboard
@@ -153,6 +154,12 @@ in
         command = lib.getExe' pkgs.tuigreet "tuigreet";
       };
     };
+  };
+
+  services.upower = {
+    enable = true;
+    percentageLow = 20;
+    percentageCritical = 5;
   };
 
   security.polkit.enable = true; # Polkit daemon
