@@ -96,6 +96,7 @@ in
     bun
     prismlauncher
     vscodium
+    pkgs-unstable.opencode
   ];
 
   programs.git = {
