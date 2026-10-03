@@ -90,6 +90,7 @@
     python3
     bun
     prismlauncher
+    vscodium
   ];
 
   programs.git = {
