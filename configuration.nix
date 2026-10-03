@@ -126,6 +126,20 @@ in
   programs.steam.enable = true;
   programs.gamemode.enable = true;
 
+  programs.starship = {
+    enable = true;
+    settings = {
+      shlvl = {
+        disabled = false;
+        threshold = 2;
+      };
+      directory.style = "bold green";
+    };
+    presets = [
+      "nerd-font-symbols"
+    ];
+  };
+
   virtualisation.docker.enable = true;
 
   services.greetd = {
