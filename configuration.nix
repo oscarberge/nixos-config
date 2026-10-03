@@ -89,6 +89,7 @@ in
     pavucontrol
     libnotify
     swaynotificationcenter
+    batsignal
     papirus-icon-theme
     adwaita-icon-theme
     wl-clipboard
