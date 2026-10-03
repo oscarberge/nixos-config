@@ -83,11 +83,12 @@ in
     btop
     ghostty
     fuzzel
-    mako
+    waybar
     grim
     slurp
     pavucontrol
-    waybar
+    libnotify
+    swaynotificationcenter
     wl-clipboard
     cliphist
     wlsunset
