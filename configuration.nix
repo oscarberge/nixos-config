@@ -109,6 +109,9 @@ in
       user.email = "oscar.berge.mail@gmail.com";
       init.defaultBranch = "main";
       core.editor = "nvim";
+      safe.directory = [
+        "/etc/nixos"
+      ];
     };
   };
 
