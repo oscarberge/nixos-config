@@ -172,7 +172,24 @@ in
 
   services.power-profiles-daemon.enable = true;
 
-  fonts.packages = with pkgs; [ nerd-fonts.jetbrains-mono ];
+  fonts = {
+    enableDefaultPackages = true;
+    
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+      inter
+      nerd-fonts.fira-code
+    ];
+
+    fontconfig.defaultFonts = {
+      serif     = [ "Noto Serif" ];
+      sansSerif = [ "Noto Sans" ];
+      monospace = [ "FiraCode Nerd Font" ];
+      emoji     = [ "Noto Color Emoji" ];
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
