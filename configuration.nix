@@ -90,6 +90,7 @@ in
     libnotify
     swaynotificationcenter
     papirus-icon-theme
+    adwaita-icon-theme
     wl-clipboard
     cliphist
     wlsunset
