@@ -103,6 +103,7 @@ in
     bun
     prismlauncher
     vscodium
+    bibata-cursors
     pkgs-unstable.opencode
   ];
 
