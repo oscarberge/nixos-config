@@ -99,6 +99,7 @@ in
     bluetui
     openconnect
     python3
+    uv
     bun
     prismlauncher
     vscodium
