@@ -85,6 +85,7 @@ in
     ghostty
     fuzzel
     waybar
+    waylock
     grim
     slurp
     pavucontrol
@@ -162,6 +163,8 @@ in
       };
     };
   };
+
+  security.pam.services.waylock = {};
 
   security.polkit.enable = true; # Polkit daemon
   security.soteria.enable = true; # Polkit agent
