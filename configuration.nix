@@ -78,6 +78,7 @@
     fuzzel
     waybar
     waylock
+    yazi
     grim
     slurp
     pavucontrol
