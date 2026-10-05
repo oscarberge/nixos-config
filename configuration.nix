@@ -144,6 +144,8 @@
     ];
   };
 
+  programs.localsend.enable = true;
+
   virtualisation.docker.enable = true;
 
   services.greetd = {
