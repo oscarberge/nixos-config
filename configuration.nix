@@ -2,13 +2,8 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
-let
-  pkgs-unstable = import <nixpkgs-unstable> {
-    config = config.nixpkgs.config;
-  };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -73,9 +68,6 @@ in
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   security.sudo.wheelNeedsPassword = false;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
