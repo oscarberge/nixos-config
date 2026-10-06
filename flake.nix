@@ -6,24 +6,29 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
     let
       system = "x86_64-linux";
       nixpkgsConfig = { allowUnfree = true; };
-    in
-      {
-        nixosConfigurations.thinkpad = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config = nixpkgsConfig;
-            };
-          };
-          modules = [
-            ./configuration.nix
-            { nixpkgs.config = nixpkgsConfig; }
-          ];
-        };
+
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config = nixpkgsConfig;
       };
+
+      mkHost = hostname: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs pkgs-unstable; };
+        modules = [
+          ./hosts/${hostname}
+          { nixpkgs.config = nixpkgsConfig; }
+        ];
+      };
+    in
+    {
+      nixosConfigurations = {
+        thinkpad = mkHost "thinkpad";
+        # zenith = mkHost "zenith";
+      };
+    };
 }
