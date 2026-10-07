@@ -166,6 +166,16 @@
     pulse.enable = true;
   };
 
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "0001:0001:09b4e68d" ];
+      settings.main = {
+        "leftmeta+leftshift+f23" = "rightcontrol";
+      };
+    };
+  };
+
   services.power-profiles-daemon.enable = true;
 
   fonts = {
