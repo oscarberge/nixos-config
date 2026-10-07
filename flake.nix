@@ -28,7 +28,7 @@
     {
       nixosConfigurations = {
         thinkpad = mkHost "thinkpad";
-        # zenith = mkHost "zenith";
+        zenith = mkHost "zenith";
       };
     };
 }
