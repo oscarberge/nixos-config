@@ -156,7 +156,7 @@
     settings = {
       default_session = {
         user = "greeter";
-        command = lib.getExe' pkgs.tuigreet "tuigreet";
+        command = "${lib.getExe' pkgs.tuigreet "tuigreet"} --cmd sway";
       };
     };
   };
