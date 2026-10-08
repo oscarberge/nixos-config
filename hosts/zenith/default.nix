@@ -192,6 +192,7 @@
       noto-fonts-color-emoji
       inter
       nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
     ];
 
     fontconfig.defaultFonts = {
