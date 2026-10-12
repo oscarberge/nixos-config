@@ -98,6 +98,7 @@
     prismlauncher
     vscodium
     bibata-cursors
+    spotify
     pkgs-unstable.opencode
   ];
 
