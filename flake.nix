@@ -6,7 +6,7 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, ... }:
     let
       system = "x86_64-linux";
       nixpkgsConfig = { allowUnfree = true; };
@@ -18,7 +18,7 @@
 
       mkHost = hostname: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs pkgs-unstable; };
+        specialArgs = { inherit pkgs-unstable; };
         modules = [
           ./hosts/${hostname}
           { nixpkgs.config = nixpkgsConfig; }
