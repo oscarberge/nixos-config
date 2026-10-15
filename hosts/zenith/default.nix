@@ -115,27 +115,6 @@
   virtualisation.docker.enable = true;
   programs.localsend.enable = true;
 
-  # ── Fonts ─────────────────────────────────────────────────────────
-  fonts = {
-    enableDefaultPackages = true;
-
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-color-emoji
-      inter
-      nerd-fonts.fira-code
-      pkgs-unstable.nerd-fonts.jetbrains-mono
-    ];
-
-    fontconfig.defaultFonts = {
-      serif     = [ "Noto Serif" ];
-      sansSerif = [ "Noto Sans" ];
-      monospace = [ "FiraCode Nerd Font" ];
-      emoji     = [ "Noto Color Emoji" ];
-    };
-  };
-
   # ── System packages ───────────────────────────────────────────────
   environment.systemPackages = with pkgs; [
     openconnect
