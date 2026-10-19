@@ -69,7 +69,7 @@
   services.greetd = {
     enable = true;
     settings.default_session = {
-      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --remember-session --time --asterisks";
+      command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --time --asterisks";
       user = "greeter";
     };
   };
