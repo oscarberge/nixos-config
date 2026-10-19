@@ -102,10 +102,7 @@
 
   # Gaming
   programs = {
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
+    steam.enable = true;
     gamemode.enable = true;
     gamescope.enable = true;
   };
