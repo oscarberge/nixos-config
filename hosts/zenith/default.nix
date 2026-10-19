@@ -112,11 +112,6 @@
   virtualisation.docker.enable = true;
   programs.localsend.enable = true;
 
-  # System packages
-  environment.systemPackages = with pkgs; [
-    openconnect
-  ];
-
   # State version
   # Do NOT change this after the initial install. It does not affect which
   # nixpkgs version you're on; it only preserves compatibility with
