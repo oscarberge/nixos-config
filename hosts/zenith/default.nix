@@ -6,23 +6,23 @@
     ../../pkgs/ntnu-vpn
   ];
 
-  # ── Nix ───────────────────────────────────────────────────────────
+  # Nix
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.nix-ld.enable = true;
 
-  # ── Boot ──────────────────────────────────────────────────────────
+  # Boot
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
 
-  # ── Networking ────────────────────────────────────────────────────
+  # Networking
   networking = {
     hostName = "zenith";
     networkmanager.enable = true;
   };
 
-  # ── Locale, time & console ────────────────────────────────────────
+  # Locale, time & console
   time.timeZone = "Europe/Oslo";
   console.keyMap = "no";
 
@@ -41,14 +41,14 @@
     };
   };
 
-  # ── Users ─────────────────────────────────────────────────────────
+  # Users
   users.users."osbe" = {
     isNormalUser = true;
     description = "Oscar Berge";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
-  # ── Security ──────────────────────────────────────────────────────
+  # Security
   security = {
     sudo.wheelNeedsPassword = false;
     pam.services.waylock = { };
@@ -57,7 +57,7 @@
     rtkit.enable = true;
   };
 
-  # ── Desktop: Sway, login & session ────────────────────────────────
+  # Desktop: Sway, login & session
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -74,7 +74,7 @@
     };
   };
 
-  # ── Audio ─────────────────────────────────────────────────────────
+  # Audio
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -84,7 +84,7 @@
     };
   };
 
-  # ── Hardware & input ──────────────────────────────────────────────
+  # Hardware & input
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -100,7 +100,7 @@
     };
   };
 
-  # ── Gaming ────────────────────────────────────────────────────────
+  # Gaming
   programs = {
     steam = {
       enable = true;
@@ -110,17 +110,17 @@
     gamescope.enable = true;
   };
 
-  # ── Services & virtualisation ─────────────────────────────────────
+  # Services & virtualisation
   services.openssh.enable = true;
   virtualisation.docker.enable = true;
   programs.localsend.enable = true;
 
-  # ── System packages ───────────────────────────────────────────────
+  # System packages
   environment.systemPackages = with pkgs; [
     openconnect
   ];
 
-  # ── State version ─────────────────────────────────────────────────
+  # State version
   # Do NOT change this after the initial install. It does not affect which
   # nixpkgs version you're on; it only preserves compatibility with
   # stateful data. See `man configuration.nix` or
