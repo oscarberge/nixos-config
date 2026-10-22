@@ -1,5 +1,38 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
+let
+  shares = [
+    "arkivet-uka"
+    "felles"
+    "fg"
+    "fg-sekk"
+    "fg-web"
+    "oscarber"
+  ];
+
+  mkShare =
+    name:
+    lib.nameValuePair "/mnt/samfundet/${name}" {
+      device = "//samba.samfundet.no/${name}";
+      fsType = "cifs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "x-systemd.idle-timeout=60"
+        "x-systemd.device-timeout=5s"
+        "x-systemd.mount-timeout=5s"
+        "credentials=/etc/smb-secrets"
+        "uid=1000"
+        "gid=100"
+      ];
+    };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,7 +40,10 @@
   ];
 
   # Nix
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   programs.nix-ld.enable = true;
 
   # Boot
@@ -41,19 +77,26 @@
     };
   };
 
+  # File systems
+  fileSystems = lib.listToAttrs (map mkShare shares);
+
   # Users
   users.users."osbe" = {
     isNormalUser = true;
     description = "Oscar Berge";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
   };
 
   # Security
   security = {
     sudo.wheelNeedsPassword = false;
     pam.services.waylock = { };
-    polkit.enable = true;   # Polkit daemon
-    soteria.enable = true;  # Polkit agent
+    polkit.enable = true; # Polkit daemon
+    soteria.enable = true; # Polkit agent
     rtkit.enable = true;
   };
 
