@@ -1,8 +1,6 @@
 {
-  config,
   lib,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 
@@ -45,6 +43,7 @@ in
     "flakes"
   ];
   programs.nix-ld.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Boot
   boot.loader = {

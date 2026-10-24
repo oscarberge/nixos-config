@@ -1,34 +1,21 @@
 {
   description = "Oscar Berge NixOS config";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }:
+  outputs =
+    { nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      nixpkgsConfig = { allowUnfree = true; };
 
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config = nixpkgsConfig;
-      };
-
-      mkHost = hostname: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit pkgs-unstable; };
-        modules = [
-          ./hosts/${hostname}
-          { nixpkgs.config = nixpkgsConfig; }
-        ];
-      };
+      mkHost =
+        hostname:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/${hostname} ];
+        };
     in
     {
-      nixosConfigurations = {
-        thinkpad = mkHost "thinkpad";
-        zenith = mkHost "zenith";
-      };
+      nixosConfigurations = nixpkgs.lib.genAttrs [ "thinkpad" "zenith" ] mkHost;
     };
 }
