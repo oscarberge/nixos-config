@@ -131,6 +131,8 @@ in
     powerOnBoot = true;
   };
 
+  zramSwap.enable = true;
+
   services.power-profiles-daemon.enable = true;
 
   services.keyd = {
