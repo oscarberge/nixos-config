@@ -43,6 +43,7 @@ in
     "flakes"
   ];
   nixpkgs.config.allowUnfree = true;
+  programs.nix-ld.enable = true;
 
   # Boot
   boot.loader = {
